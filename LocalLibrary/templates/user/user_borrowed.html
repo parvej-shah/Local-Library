@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Books{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'catalog/book_list.css' %}">
+<link rel="stylesheet" href="user/user_borrowed.css">
+<div class="container">
+    <ul class='book-list'>
+        {% if bookinstance_list %}
+        {% for book in bookinstance_list %}
+        <li class='book'>
+            <a href="{{book.book.get_absolute_url}}">
+                <img class='book-cover' src="https://source.unsplash.com/random/150x150?Book"
+                    alt="{{book.book.title}} thumbnail">
+                <div class="book-detail">
+                    <a class="book-title" href="{{book.get_absolute_url}}">{{book.book.title}}</a>
+                    <p class="book-subtitle"><small>By</small><a href="{{books.author.get_absolute_url}}"><em>
+                                {{book.book.author.full_name}}</em></a></p>
+                    <p class='info'>Due Back: <small {% if book.is_overdue %}style='color:red;'{% else %}style='color:rgb(121, 202, 0);'{% endif %}>{{book.due_back}}</small></p>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+        {% else %}
+        <li class='book'>
+            <p>You haven't Borrowed any book {{user}}</p>
+        </li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock content %}

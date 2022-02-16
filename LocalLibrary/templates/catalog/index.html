@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'catalog/index.css' %}">
+<div class="container">
+    <h1>The library has the following records</h1>
+    <ul>
+        <li><small>You visited this library {{num_visits}} time{{num_visits|pluralize}}</small></li>
+        <li><Strong>Books:</Strong> {{num_book}}</li>
+        <li><Strong>Author:</Strong> {{num_author}}</li>
+        <li><Strong>Genre:</Strong> {{num_genre}}</li>
+        <li><Strong>Copies:</Strong> {{num_copies}}</li>
+        <li><Strong>Copies Availble:</Strong> {{num_book_available}}</li>
+        <li><strong>Language:</strong> {{num_language}}</li>
+    </ul>
+</div>
+{% endblock content %}

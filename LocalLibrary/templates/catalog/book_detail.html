@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Book detail{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'catalog/book_detail.css' %}">
+<div class="content">
+    <div class="container">
+        <div class="left">
+            <div ><img class="book-cover" src="https://source.unsplash.com/random?Books,Literature"
+                alt="{{book.title}}'s cover"></div>
+            <div class="detail">
+                <p>Author: <small class="genre"><a class="author" href="{{book.author.get_absolute_url}}">{{book.author}}</a></small></p>
+                <p>Language: <small class="genre">{{book.language}}</small> </p>
+                <p>Genre: <small class="genre">{{book.genre.all|join:", "}} </small> </p>
+                <p>Status: <small>{% if a %}<span style='color:green'>Available</span>{% else %} <span style='color:red'>{% if d %}{% for e in d %}Available in {{e.due_back}}{% endfor %}{% endif %}</span>{% endif %}</p></small>
+            </div>
+        </div>
+        <div class="right">
+            <p class="title"><strong>{{book.title}}</strong></p>
+            <p class="sum">Summary:</p>
+            <p class="summary">{{book.summary}}</p>
+            {% for copy in book.bookinstance_set.all %}
+            {% if  forloop.counter == 1 %}
+            <p style='margin-top:5px;' ><small>{{copy.imprint}}</small></p>
+            {% endif %}
+            {% endfor %}
+            
+        </div>
+    </div>
+</div>
+{% endblock content %}

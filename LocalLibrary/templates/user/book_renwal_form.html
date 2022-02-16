@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Book Renewal{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'registration/login.css' %}">
+<style>
+    legend{
+        margin-bottom:8px;
+        padding-left:0px;
+    }
+    br{
+        margin: 6px;
+    }
+</style>
+<div class="container">
+    
+<form action="" method="post">
+    <legend>{{book_instance.book.title}}
+        <br>
+       <small>Due Back: <span {% if book_instance.is_overdue %} style='color:red;' {% else %}style='color:rgb(121, 202, 0)' {% endif %} >{{book_instance.due_back}}</span> </small> 
+    </legend>
+    {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit">Renew</button>
+</form>
+</div>
+{% endblock content %}

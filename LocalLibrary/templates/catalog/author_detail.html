@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{author.full_name}}{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'catalog/author_detail.css' %}">
+<link rel="stylesheet" href="{% static 'catalog/book_list.css' %}">
+<div class="author">
+<h2>{{author.full_name}}</h2>
+<p>{{author.date_of_birth}} - {% if author.date_of_death %}{{author.date_of_death}}{% endif %}</p>
+</div>
+
+<div class="container">
+    <h4>{{author.full_name}}'s Books</h4>
+    <hr>
+    <ul class='book-list'>
+        {% for books in author.book_set.all %}
+        <li class='book'>
+            <a href="{{books.get_absolute_url}}">
+                <img class='book-cover' src="https://source.unsplash.com/random/150x150?Book"
+                    alt="{{book.title}} thumbnail">
+                <div class="book-detail">
+                    <a class="book-title" href="{{books.get_absolute_url}}">{{books.title}}</a>
+                    <p class="book-subtitle"><small>By</small><a href="{{books.author.get_absolute_url}}"><em>
+                                {{books.author.full_name}}</em></a></p>
+                    <p class="book-subtitle"><small>{{books.bookinstance_set.all.count}}
+                            Cop{{books.bookinstance_set.all.count|pluralize:'y,ies' }} Total</small></p>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

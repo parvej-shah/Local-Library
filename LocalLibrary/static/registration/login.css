@@ -1,0 +1,47 @@
+fieldset {
+    border: 0 none;
+}
+
+.container {
+    margin: 100px auto;
+    width: fit-content;
+    height: fit-content;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+form {
+    padding: 20px 50px;
+}
+
+button {
+    border-style: none;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background-color: rgb(9, 138, 170);
+    margin-top: 6px;
+    color: white;
+    border: 1px solid rgb(9, 138, 170);
+    transition: .2s;
+}
+
+button:hover {
+    color: rgb(9, 138, 170);
+    border: 1px solid rgb(9, 138, 170);
+    background-color: white;
+
+}
+
+.sm {
+    font-size: 11px;
+}
+
+.sign {
+    font-size: 10px;
+    color: rgb(59, 167, 230);
+}
+
+.sign:hover {
+    color: rgb(89, 187, 243);
+}

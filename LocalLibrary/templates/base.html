@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'catalog/style.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    <nav>
+        <ul class="nav">
+            <div class="nav-item-left rl">
+                <li class="nav-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="nav-item"><a href="{% url 'books' %}">Books</a></li>
+                <li class="nav-item"><a href="{% url 'author' %}">Authors</a></li>
+            </div>
+            <div class="nav-item-right rl">
+                {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <button class="dropbtn nav-item ">{{ user.get_username }}</button>
+                    <div class="dropdown-content">
+                        <a class="nav-item" href="{% url 'user_borrowed' %}">Borrowed</a>
+                    {% if perms.catalog.view_book %}
+                    <a class="nav-item" href="{% url 'librarian' %}">Library</a>
+                    {% endif %}
+                        <a class="nav-item" href="{% url 'logout' %}">Logout</a>
+                    </div>
+                </div>
+                {% else %}
+                <li class="nav-item"><a href="{% url 'login' %}?next={{request.path}}">Login</a></li>
+                {% endif %}
+            </div>
+        </ul>
+    </nav>
+    {% if messages %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock content %}
+</body>
+
+</html>

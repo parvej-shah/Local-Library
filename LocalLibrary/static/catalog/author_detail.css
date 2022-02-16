@@ -1,0 +1,20 @@
+.author {
+    text-align: center;
+}
+
+h2,
+hr,
+h4 {
+    margin: 2px;
+    margin-bottom: 5px;
+}
+
+h4 {
+    margin-top: 6px;
+}
+
+hr {
+    padding: 0;
+    color: rgb(149, 235, 227);
+    border-bottom-style: none;
+}

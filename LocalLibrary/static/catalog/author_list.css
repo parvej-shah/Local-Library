@@ -1,0 +1,38 @@
+.profile {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.info {
+    font-size: 18px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px 0px;
+}
+
+.content .container {
+    flex-grow: 1;
+}
+
+.container {
+    display: flex;
+    gap: 12px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2),
+        0 4px 18px 0 rgba(0, 0, 0, 0.19);
+    background-color: antiquewhite;
+    transition: transform .2s;
+    padding: 10px;
+}
+
+.container:hover {
+    transform: scale(1.2);
+}
+
+.container .info {
+    flex-shrink: 0;
+}

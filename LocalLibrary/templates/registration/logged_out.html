@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'registration/login.css' %}">
+<style>
+    p{
+        margin: 0px;
+    }
+    .info{
+        padding:20px;
+        margin:auto;
+    }
+    .container{
+        height: 150px;
+        width: 300px;
+        display:flex;
+    }
+</style>
+<div class="container">
+    <div class="info">
+    <p>You are logged out!!! <a class='sign' href="{% url 'login' %}">Log in</a></p>
+    </div>
+</div>
+
+{% endblock content %}

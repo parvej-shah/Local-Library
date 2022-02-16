@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Books{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'catalog/book_list.css' %}">
+<div class="container">
+    <ul class='book-list'>
+        {% for books in book_list %}
+        <li class='book'>
+            <a href="{{books.get_absolute_url}}">
+                <img class='book-cover' src="https://source.unsplash.com/random/150x150?Book"
+                    alt="{{book.title}} thumbnail">
+                <div class="book-detail">
+                    <a class="book-title" href="{{books.get_absolute_url}}">{{books.title}}</a>
+                    <p class="book-subtitle"><small>By</small><a href="{{books.author.get_absolute_url}}"><em>
+                                {{books.author.full_name}}</em></a></p>
+                    <p class="book-subtitle"><small>{{books.bookinstance_set.all.count}}
+                            Cop{{books.bookinstance_set.all.count|pluralize:'y,ies' }} Total</small></p>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}

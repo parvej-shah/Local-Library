@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Author{% endblock title %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'catalog/author_list.css' %}">
+<div class="content">
+
+    {% for author in author_list %}
+    <div class="container">
+        <img class='profile' src="https://source.unsplash.com/random/150x150?author" alt="">
+        <div class="info">
+            <p><a href="{{author.get_absolute_url}}">{{author.full_name}}</a></p>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}
